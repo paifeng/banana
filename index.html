@@ -1,0 +1,84 @@
+<!DOCTYPE html
+    PUBLIC "-//W3C//DTD XHTML 1.0 Transitional//EN" "http://www.w3.org/TR/xhtml1/DTD/xhtml1-transitional.dtd">
+<html xmlns="http://www.w3.org/1999/xhtml">
+
+<head>
+    <title>复制口令打开淘宝</title>
+    <meta name="Description" content="医保指社会医疗保险。社会医疗保险是国家和社会根据一定的法律法规，为向保障范围内的劳动者提供患病时基本医疗需求保障而建">
+    <meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
+    <meta name="viewport"
+        content="initial-scale=1.0,user-scalable=no,minimum-scale=1.0, maximum-scale=1.0,width=device-width">
+    <style>
+        .scenograph {
+            padding: 10px 10px 0;
+        }
+
+        .scenograph #type-bimg {
+            box-shadow: 0 4px 8px rgba(21, 0, 71, 0.1);
+            width: 100%;
+        }
+
+        .drugsword {
+            margin: 16px 10px 10px;
+            text-align: center;
+        }
+
+        .medicine-bag {
+            align-items: center;
+            background: #fce3e3 none repeat scroll 0 0;
+            border: 1px dashed #fb6a65;
+            color: #5f5858;
+            display: flex;
+            flex-direction: column;
+            font-size: 12px;
+            line-height: 24px;
+            padding: 4px;
+        }
+
+        .nomen-proprium {
+            color: #5f5858;
+            font-size: 16px;
+            font-weight: bold;
+        }
+
+        .copy-tip {
+            font-size: 12px;
+        }
+
+        .icopy {
+            background: #fb6a65 none repeat scroll 0 0;
+            color: white;
+            font-size: 14px;
+            padding: 6px;
+        }
+    </style>
+    <script type="text/javascript" src="//lib.baomitu.com/jquery/2.2.4/jquery.min.js"></script>
+    <script type="text/javascript" src="//lib.baomitu.com/clipboard.js/1.6.1/clipboard.min.js"></script>
+</head>
+
+<body>
+    <div id="wrap">
+        <div class="scenograph">
+            <img id="type-bimg" src="">
+        </div>
+        <div class="drugsword">
+            <div class="medicine-bag">
+                <div id="nomen-proprium" class="nomen-proprium">
+                    <span id="np"></span>
+                </div>
+                <div id="copy-tip" class="copy-tip">
+                    长按全选复制文字，打开[手机掏宝]即可领券购买
+                </div>
+            </div>
+            <div type="button" data-clipboard-text="" class="icopy" id="icopy" onclick="">一键复制</div>
+            <p style="display:none">
+                医保指社会医疗保险。社会医疗保险是国家和社会根据一定的法律法规，为向保障范围内的劳动者提供患病时基本医疗需求保障而建立的社会保险制度。基本医疗保险基金由统筹基金和个人账户构成。职工个人缴纳的基本医疗保险费全部计入个人账户；用人单位缴纳的基本医疗保险费分为两部分，一部分划入个人账户，一部分用于建立统筹基金。
+            </p>
+        </div>
+    </div>
+    <script>
+        window.mobileUtil = (function (h, g) { var d = navigator.userAgent, c = /android|adr|linux/gi.test(d), b = /iphone|ipod|ipad/gi.test(d) && !c, e = /BlackBerry/i.test(d), f = /IEMobile/i.test(d), a = c || b || e || f; return { isAndroid: c, isIOS: b, isMobile: a, isWeixin: /MicroMessenger/gi.test(d), isQQ: / QQ/gi.test(d), isPC: !a } })(window, document); function GetVar(a) { var c = window.location.search.substring(1); var d = c.split("&"); for (var b = 0; b < d.length; b++) { var e = d[b].split("="); if (e[0] == a) { return unescape(e[1]) } } return (false) } var clipboard = new Clipboard(".icopy"); clipboard.on("success", function (a) { if (a.trigger.disabled == false || a.trigger.disabled == undefined) { a.trigger.innerHTML = "复制成功，打开【手淘】购买"; a.trigger.style.backgroundColor = "#78bd33"; a.trigger.disabled = true; setTimeout(function () { a.trigger.innerHTML = "一键复制"; a.trigger.style.backgroundColor = "#fb6a65"; a.trigger.disabled = false }, 2000) } }); clipboard.on("error", function (a) { a.trigger.innerHTML = "复制失败,请手动复制"; a.trigger.style.backgroundColor = "#b5b4b4" }); $(function () { var a = GetVar("url"); if (mobileUtil.isWeixin == true || a == "") { var d = "￥" + GetVar("taowords").match(/\w+/) + "￥"; $("#icopy").attr("data-clipboard-text", d); $("#np").text(d); $("#type-bimg").attr("src", GetVar("picurl")); var c = document.querySelector(".nomen-proprium"); document.addEventListener("selectionchange", function (f) { window.getSelection().selectAllChildren(c) }, false) } else { if (mobileUtil.isIOS) { a = "https://t.asczwa.com/taobao?backurl=" + encodeURIComponent(a) } if (mobileUtil.isQQ && mobileUtil.isAndroid) { var b = a.replace("http://", "").replace("https://", ""); var e = document.createElement("iframe"); e.src = "taobao://" + b; e.style.display = "none"; document.body.appendChild(e); window.location.href = a } else { window.location.href = a } } });
+    </script>
+</body>
+
+</html>
